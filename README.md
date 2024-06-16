@@ -57,17 +57,17 @@ https://github.com/IvanPovaliaev/2048WinFormsApp/assets/157638990/d87b8b5c-9f87-
 ### 💾Экспорт в Excel
 Для экспорта результатов игры в Excel была использована библиотека ***ClosedXML.Excel***. Экспорт результатов осуществляется с помощью метода ***ExportCollectionExcel*** класса ***FileProvider***:
 ```csharp
-        public static void ExportCollectionExcel<T>(string filePath, string sheetName, IEnumerable<T> collection)
-        {
-            using (var workbook = new XLWorkbook())
-            {
-                workbook.AddWorksheet(sheetName)
-                    .FirstCell()
-                    .InsertTable(collection, false);
-                workbook.Worksheet(1).Row(1).Style.Font.Bold = true;
-                workbook.Worksheet(1).Style.Font.FontSize = 12;
-                workbook.Worksheet(1).Style.Font.FontName = "Times New Roman";
-                workbook.SaveAs(filePath);
-            }
-        }
+public static void ExportCollectionExcel<T>(string filePath, string sheetName, IEnumerable<T> collection)
+{
+    using (var workbook = new XLWorkbook())
+    {
+        workbook.AddWorksheet(sheetName)
+            .FirstCell()
+            .InsertTable(collection, false);
+        workbook.Worksheet(1).Row(1).Style.Font.Bold = true;
+        workbook.Worksheet(1).Style.Font.FontSize = 12;
+        workbook.Worksheet(1).Style.Font.FontName = "Times New Roman";
+        workbook.SaveAs(filePath);
+    }
+}
 ```
