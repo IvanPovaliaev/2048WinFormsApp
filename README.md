@@ -39,3 +39,35 @@ https://github.com/IvanPovaliaev/2048WinFormsApp/assets/157638990/d87b8b5c-9f87-
 
 </div>
 
+## 🛠️Техническая часть
+
+Проект выполнен с соблюдением принципов **ООП** и использованием **LINQ**.
+Хранение результатов осуществляется в отдельных файлах файловой системы с сериализацией/дисериализацией в **JSON** с использованием библиотеки *Newtonsoft.Json*.
+
+Решение разбито на 2 составляющие:
+1. Проект приложения на WinForms **2048WinFormsApp**;
+2. Проект общей библиотеки **2048.Common**.
+
+### 🏗️Архитектура
+
+Структура каталога решения:<br />
+  
+ ![image](https://github.com/IvanPovaliaev/2048WinFormsApp/assets/157638990/a88ebb55-8102-4f0d-bb32-71803ecb8c2d)
+
+### 💾Экспорт в Excel
+Для экспорта результатов игры в Excel была использована библиотека ***ClosedXML.Excel***. Экспорт результатов осуществляется с помощью метода ***ExportCollectionExcel*** класса ***FileProvider***:
+```csharp
+        public static void ExportCollectionExcel<T>(string filePath, string sheetName, IEnumerable<T> collection)
+        {
+            using (var workbook = new XLWorkbook())
+            {
+                workbook.AddWorksheet(sheetName)
+                    .FirstCell()
+                    .InsertTable(collection, false);
+                workbook.Worksheet(1).Row(1).Style.Font.Bold = true;
+                workbook.Worksheet(1).Style.Font.FontSize = 12;
+                workbook.Worksheet(1).Style.Font.FontName = "Times New Roman";
+                workbook.SaveAs(filePath);
+            }
+        }
+```
