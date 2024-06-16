@@ -67,7 +67,7 @@
             rulesTextBox.Location = new System.Drawing.Point(12, 47);
             rulesTextBox.Multiline = true;
             rulesTextBox.Name = "rulesTextBox";
-            rulesTextBox.Size = new System.Drawing.Size(760, 400);
+            rulesTextBox.Size = new System.Drawing.Size(760, 447);
             rulesTextBox.TabIndex = 2;
             rulesTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
